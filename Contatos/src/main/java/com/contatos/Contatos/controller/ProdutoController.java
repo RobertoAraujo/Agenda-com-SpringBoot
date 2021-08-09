@@ -16,15 +16,15 @@ import com.contatos.Contatos.repository.Produtos;
 public class ProdutoController {
 
 	@Autowired
-	private Produtos produto;
+	private Produtos prod;
 	
+	// lista todos os produtos da tabela produtos no banco de dados
 	@GetMapping
 	  public ModelAndView listar() {
-		List<Produto> lista = produto.findAll();
-	     
+		List<Produto> lista = prod.findAll();  
 	    ModelAndView modelAndView = new ModelAndView("produtos");
 	    modelAndView.addObject("produtos", lista);
-	     
 	    return modelAndView;
 	  }
+	
 }

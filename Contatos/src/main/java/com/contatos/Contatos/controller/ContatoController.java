@@ -18,6 +18,7 @@ public class ContatoController {
 	@Autowired
 	private Contatos contato;
 	
+	// usa modelandview poara lista os contatos
 	  @GetMapping
 	  public ModelAndView listar() {
 		List<Contato> lista = contato.findAll();
