@@ -19,7 +19,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
 	integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
 	crossorigin="anonymous"></script>
-
+<style type="text/css"> h1{text-align: center;} a{text-align: center;}</style>
 </head>
 
 <body>
@@ -28,10 +28,12 @@
 			<div class="col-1"></div>
 			<div class="col-10">
 				<h1>Lista de contatos</h1>
+				<br>
+				<hr>
 				<table class="table table-bordered">
-					<thead>
+					<thead style="text-align: center">
 						<tr>
-							<th>#</th>
+							<th># id </th>
 							<th>Nome</th>
 							<th>E-mail</th>
 							<th>Ações</th>
@@ -39,12 +41,12 @@
 					</thead>
 					<tbody>
 						<tr th:each="contato: ${contatos}">
-							<td th:text="${contato.id}"></td>
+							<td th:text="${contato.id}" style="text-align: center"></td>
 							<td th:text="${contato.nome}"></td>
 							<td th:text="${contato.email}"></td>
-							<td style="width: 200px"> 
-								<button type="button" class="btn btn-warning" id="editar">Editar</button>
-					         	<button type="button" class="btn btn-danger" id="deletar">Deletar</button>
+							<td style="width: 200px; text-align: center;"> 
+								<button type="button" class="btn btn-warning btn-sm" id="editar">Editar</button>
+					         	<button type="button" class="btn btn-danger btn-sm" id="deletar">Deletar</button>
 					        </td>
 						</tr>
 					</tbody>
@@ -55,7 +57,9 @@
 		</div>
 	</div>
 
-
 	<a href="/#">voltar</a>
+<footer style="text-align: center">
+	<div> Todos os Direitos reservados</div>
+</footer>
 </body>
 </html>

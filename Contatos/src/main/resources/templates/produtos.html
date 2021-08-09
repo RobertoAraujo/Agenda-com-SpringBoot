@@ -7,7 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
-
+<style type="text/css"> h1{text-align: center;}</style>
 </head>
 <body>
 
@@ -18,8 +18,10 @@
     </div>
     <div class="col-10">
 		 <h1>Lista de produtos</h1>
-       <table class="table table-bordered">
-    <thead>
+		 <br>
+		 <hr>
+       <table class="table table-bordered" >
+    <thead style="text-align: center">
       <tr>
         <th>#id</th>
         <th>Nome</th>
@@ -30,13 +32,13 @@
     </thead>
     <tbody>
       <tr th:each="produto: ${produtos}">  
-        <td th:text="${produto.id}"></td>
-        <td th:text="${produto.nome}"></td>
-        <td th:text="${produto.quantidade}"></td>
-        <td th:text="${produto.valor}"></td>
-         <td > 
-         	<button type="button" class="btn btn-danger">Deletar</button>
-			<button type="button" class="btn btn-warning">Editar</button>
+        <td th:text="${produto.id}" style="text-align: center"></td>
+        <td th:text="${produto.nome}" ></td>
+        <td th:text="${produto.quantidade}" style="text-align: center"></td>
+        <td th:text="${produto.valor}" style="text-align: center"></td>
+         <td style="width: 200px; text-align: center" > 
+			<button type="button" class="btn btn-warning btn-sm" id="editar">Editar</button>
+         	<button type="button" class="btn btn-danger btn-sm" id="deletar">Deletar</button>
          </td>
       </tr>
     </tbody>

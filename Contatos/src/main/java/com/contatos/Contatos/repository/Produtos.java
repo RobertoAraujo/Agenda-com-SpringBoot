@@ -11,6 +11,8 @@ import com.contatos.Contatos.model.Produto;
 @Repository
 public interface Produtos extends JpaRepository<Produto, Long>{
 
+	//Produto findByProduto(Long id);
+	
 	@Query(value = "select * from produto where ativo = 1", nativeQuery = true)
 	List<Produto> findAllAtivas(); 
 }
