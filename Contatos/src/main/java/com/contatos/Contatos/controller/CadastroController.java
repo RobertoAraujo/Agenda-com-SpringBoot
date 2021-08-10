@@ -34,16 +34,16 @@ public class CadastroController {
 	private Contatos contat;
 	
 	// cadastra e salva no banco
-		@RequestMapping(path = "/contato-cadastro",  method = RequestMethod.GET)
+		@RequestMapping(path = "/contatos-cadastro",  method = RequestMethod.GET)
 		public ModelAndView cadastroContatoGet(Contato contato){			
-			return new ModelAndView("contato-cadastro");
+			return new ModelAndView("contatos-cadastro");
 		}
 		
-		@RequestMapping(path = "/contato-cadastro",  method = RequestMethod.POST)
+		@RequestMapping(path = "/contatos-cadastro",  method = RequestMethod.POST)
 		public ModelAndView CadastroContatoPost(Contato contato){			
 			contat.save(contato);
 			
-			return new ModelAndView("contato-cadastro");
+			return new ModelAndView("contatos-cadastro");
 		}
 	
 	
