@@ -1,3 +1,4 @@
+
 package com.contatos.Contatos.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,35 +16,36 @@ import com.contatos.Contatos.repository.Produtos;
 public class CadastroController {
 	@Autowired
 	private Produtos produt;
-	@Autowired
-	private Contatos contatos;
 	
-	// cadastra e salva no banco produto
+	// cadastra e salva no banco
 	@RequestMapping(path = "/cadastro",  method = RequestMethod.GET)
-	public ModelAndView cadastroGet(Produto produto){			
+	public ModelAndView cadastroProdutoGet(Produto produto){			
 		return new ModelAndView("cadastro");
 	}
 	
 	@RequestMapping(path = "/cadastro",  method = RequestMethod.POST)
-	public ModelAndView CadastroPost(Produto produto){			
+	public ModelAndView CadastroProdutoPost(Produto produto){			
 		produt.save(produto);
 		
 		return new ModelAndView("cadastro");
 	}
 	
-	// cadastra e salva no banco contatos
-		@RequestMapping(path = "/contatos-cadastro",  method = RequestMethod.GET)
-		public ModelAndView contatoCadastroGet(Contato contato){			
-			return new ModelAndView("contatos-cadastro");
+	@Autowired
+	private Contatos contat;
+	
+	// cadastra e salva no banco
+		@RequestMapping(path = "/contato-cadastro",  method = RequestMethod.GET)
+		public ModelAndView cadastroContatoGet(Contato contato){			
+			return new ModelAndView("contato-cadastro");
 		}
 		
-		@RequestMapping(path = "/contatos-cadastro",  method = RequestMethod.POST)
-		public ModelAndView ContatoCadastroPost(Contato contato){			
-			contatos.save(contato);
+		@RequestMapping(path = "/contato-cadastro",  method = RequestMethod.POST)
+		public ModelAndView CadastroContatoPost(Contato contato){			
+			contat.save(contato);
 			
-			return new ModelAndView("contatos-cadastro");
+			return new ModelAndView("contato-cadastro");
 		}
-
 	
 	
 }
+
