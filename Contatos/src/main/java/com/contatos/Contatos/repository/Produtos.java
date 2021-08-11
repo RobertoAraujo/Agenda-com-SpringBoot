@@ -15,4 +15,6 @@ public interface Produtos extends JpaRepository<Produto, Long>{
 	
 	@Query(value = "select * from produto where ativo = 1", nativeQuery = true)
 	List<Produto> findAllAtivas(); 
+	
+	
 }

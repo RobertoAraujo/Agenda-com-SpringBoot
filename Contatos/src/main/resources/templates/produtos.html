@@ -67,23 +67,23 @@ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLP
       <div class="modal-body">
        <h1>Cadastro de Produtos</h1>
 
-				<form method="POST" id="cadastro">
+				<form method="POST" id="cadastro" th:each="produto: ${produtos}">
 
 					<div class="form-group">
 						<input type="text" class="form-control"
 							aria-describedby="emailHelp" name="nome"
-							placeholder="Nome Produto">
+							 th:text="${produto.nome}">
 					</div>
 					<br>
 					<div class="form-group">
 						<input type="text" class="form-control"
 							aria-describedby="emailHelp" name="quantidade"
-							placeholder="Quantidade">
+							 th:text="${produto.quantidade}">
 					</div>
 					<br>
 					<div class="form-group">
 						<input type="text" class="form-control" name="valor"
-							placeholder="Valor">
+							 th:text="${produto.valor}">
 					</div>
 					<br>
 					

@@ -11,6 +11,8 @@ import com.contatos.Contatos.model.Contato;
 @Repository
 public interface Contatos extends JpaRepository<Contato, Long>{
 
+	//Contato findContatoById(Long id);
+	
 	@Query(value = "select * from contato where ativo = 1", nativeQuery = true)
 	List<Contato> findAllAtivas(); 
 }
