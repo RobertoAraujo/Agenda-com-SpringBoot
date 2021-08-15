@@ -8,19 +8,27 @@
 	rel="stylesheet"
 	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
 	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 	crossorigin="anonymous"></script>
 <script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
-	integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
 	crossorigin="anonymous"></script>
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
-	integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	crossorigin="anonymous"></script>
-<style type="text/css"> h1{text-align: center;} a{text-align: center;}</style>
+
+<style type="text/css">
+h1 {
+	text-align: center;
+}
+
+a {
+	text-align: center;
+}
+</style>
 </head>
 
 <body>
@@ -34,7 +42,7 @@
 				<table class="table table-bordered">
 					<thead style="text-align: center">
 						<tr>
-							<th># id </th>
+							<th># id</th>
 							<th>Nome</th>
 							<th>E-mail</th>
 							<th>Ações</th>
@@ -45,10 +53,53 @@
 							<td th:text="${contato.id}" style="text-align: center"></td>
 							<td th:text="${contato.nome}"></td>
 							<td th:text="${contato.email}"></td>
-							<td style="width: 200px; text-align: center;"> 
-								<button type="button" class="btn btn-warning btn-sm" id="editar">Editar</button>
-					         	<button type="button" class="btn btn-danger btn-sm" id="deletar">Deletar</button>
-					        </td>
+							<td style="width: 200px; text-align: center;">
+								<button type="button" class="btn btn-warning btn-sm" id="editar" data-toggle="modal" th:attr="data-target='#m'+${contato.id}">Editar</button>
+								
+								 <a th:href="@{/contatos/{id}(id=${contato.id})}">
+								   <button type="button" class="btn btn-danger btn-sm" id="deletar" data-toggle="modal">Delete</button></a>
+							</td>
+							
+							<!-- Modal -->
+							<div class="modal fade"th:id="'m'+${contato.id}" tabindex="-1" role="dialog"
+								aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel"  th:text="'O nome do Contato é ' + ${contato.nome}"></h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Fechar">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											
+											<form action="#"  th:action="@{/update-conato/{id}(id=${contato.id})}" th:object="${contatos}"  method="POST" id="contato-cadastro">
+												<div class="form-group">
+													<input type="text" class="form-control"
+														aria-describedby="emailHelp" name="nome" id="nome" th:value="${contato.nome}">
+												</div>
+												<br>
+												<div class="form-group">
+													<input type="text" class="form-control"
+														aria-describedby="emailHelp" name="email" th:value="${contato.email}"
+														id="quantidade">
+												</div>
+												<br>
+
+										</div>
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-secondary"
+												data-dismiss="modal">Fechar</button>
+											<button type="submit" class="btn btn-primary">Salvar
+												mudanças</button>
+										</div>
+											</form>
+									</div>
+								</div>
+							</div>
+							<!-- Modal -->
+							
 						</tr>
 					</tbody>
 				</table>
@@ -58,13 +109,14 @@
 		</div>
 	</div>
 
-<a href="/#"><button type="button" id="btn-mensagem" class="btn btn-primary" data-toggle="modal" data-target="#ExemploModalCentralizado">
- voltar
-</button></a>
-	
- 
-<footer style="text-align: center">
-	<div> Todos os Direitos reservados</div>
-</footer>
+	<a href="/#"><button type="button" id="btn-mensagem"
+			class="btn btn-primary" data-toggle="modal"
+			data-target="#ExemploModalCentralizado">voltar</button></a>
+
+
+	<footer style="text-align: center">
+		<div>Todos os Direitos reservados</div>
+	</footer>
+
 </body>
 </html>
