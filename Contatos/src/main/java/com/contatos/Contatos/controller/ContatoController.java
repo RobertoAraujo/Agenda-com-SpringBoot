@@ -52,7 +52,7 @@ public class ContatoController {
 	    }
 	        
 	    contat.save(contato);
-	    return "contatos";
+	    return "redirect:/contatos";
 	}
 	
 	@RequestMapping(path = "/contatos/{id}", method = RequestMethod.GET)

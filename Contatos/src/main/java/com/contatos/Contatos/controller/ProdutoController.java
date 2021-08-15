@@ -46,7 +46,7 @@ public class ProdutoController {
 	    }
 	        
 	    produt.save(produto);
-	    return "produtos";
+	    return "redirect:/produtos";
 	}
 	    
 	@GetMapping("/produtos/{id}")
