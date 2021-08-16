@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+	crossorigin="anonymous"></script>
+
+<style type="text/css">
+h1 {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">
+				<h1>Lista de produtos</h1>
+				<br>
+				<hr>
+				<table class="table table-bordered">
+					<thead style="text-align: center">
+						<tr>
+							<th>#id</th>
+							<th>Nome</th>
+							<th>Qntd</th>
+							<th>Valor</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="produto: ${produtos}">
+							<td th:text="${produto.id}" id="id" style="text-align: center"></td>
+							<td th:text="${produto.nome}" id="nome"></td>
+							<td th:text="${produto.quantidade}" id="quantidade"
+								style="text-align: center"></td>
+							<td th:text="${produto.valor}" style="text-align: center"
+								id="valor"></td>
+							<td style="width: 200px; text-align: center">
+							
+								<button type="button" class="btn btn-warning btn-sm" id="editar" data-toggle="modal" 
+								   th:attr="data-target='#m'+${produto.id}">Editar</button>
+								   
+								   <a th:href="@{/produtos/{id}(id=${produto.id})}">
+								   <button type="button" class="btn btn-danger btn-sm" id="deletar" data-toggle="modal">Delete</button></a>
+									
+							</td>
+							
+							<!-- Modal -->
+							<div class="modal fade" th:id="'m'+${produto.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+								aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel"
+												th:text="'O nome do produto é ' + ${produto.nome}"></h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Fechar">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<h1>Alterar Produtos</h1>
+											<form action="#"  th:action="@{/update-produto/{id}(id=${produto.id})}" th:object="${produtos}"  method="POST" id="produto-cadastro">
+												<div class="form-group">
+													<input type="text" class="form-control"
+														aria-describedby="emailHelp" name="nome" id="nome"
+														th:value="${produto.nome}">
+												</div>
+												<br>
+												<div class="form-group">
+													<input type="text" class="form-control"
+														aria-describedby="emailHelp" name="quantidade"
+														id="quantidade" th:value="${produto.quantidade}">
+												</div>
+												<br>
+												<div class="form-group">
+													<input type="text" class="form-control" name="valor"
+														id="valor" th:value="${produto.valor}" >
+												</div>
+												<br>
+
+										</div>
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-secondary"
+												data-dismiss="modal">Fechar</button>
+											<button type="submit" class="btn btn-primary">Salvar
+												mudanças</button>
+										</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<!-- Modal -->
+							
+						</tr>
+						
+					</tbody>
+				</table>
+			</div>
+			<div class="col-1"></div>
+		</div>
+	</div>
+
+
+<br>
+			
+	<footer style="text-align: center">
+		<div>Todos os Direitos reservados</div>
+		<div><a href="/">voltar</a></div>
+	</footer>
+
+</body>
+</html>
