@@ -1,5 +1,5 @@
 ### Lista-de-compras-com-SpringBoot
-#Srpingboot
+#Srping
 #Padão MVC
 #Aplicação e bem simples e mais para teste de conhecimento da lib Thymeleaf.
 #bootstrap de estilização.
